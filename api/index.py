@@ -1,4 +1,6 @@
 from flask import Flask, request, jsonify
+from langchain.text_splitter import SemanticChunker
+from langchain.embeddings import OpenAIEmbeddings  
 
 app = Flask(__name__)
 
@@ -40,7 +42,7 @@ def process_text():
     except Exception as e:
             print(f"An error occurred: {e}")  # Log the exception
             return jsonify({'error': str(e)}), 500  # Return a 500 error with the exception message
-            
+
 if __name__ == '__main__':
     app.run(debug=True)
 
