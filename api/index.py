@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify 
 from langchain_experimental.text_splitter import SemanticChunker
+from langchain_openai import OpenAIEmbeddings
 
 app = Flask(__name__)
 
@@ -20,23 +21,22 @@ def process_text():
     try:
         data = request.get_json()  # Get JSON data from the request body
 
-        # if not data or 'text' not in data:
-        #     return jsonify({'error': 'Missing text data in request body'}), 400
+        if not data or 'text' not in data:
+            return jsonify({'error': 'Missing text data in request body'}), 400
 
-        # text = data['text']
+        text = data['text']
 
-        #     # Initialize OpenAI Embeddings
-        # embeddings = OpenAIEmbeddings()  # You can adjust the model if needed
+            # Initialize OpenAI Embeddings
+        embeddings = OpenAIEmbeddings()  # You can adjust the model if needed
 
-        #     # Initialize SemanticChunker
-        # text_splitter = SemanticChunker(embeddings=embeddings)
+            # Initialize SemanticChunker
+        text_splitter = SemanticChunker(embeddings=embeddings)
 
-        #     # Perform semantic chunking
-        # chunks = text_splitter.split_text(text)
+            # Perform semantic chunking
+        chunks = text_splitter.split_text(text)
 
-        #     # Return the chunks as a JSON response
-        # return jsonify({'chunks': chunks}), 200
-        return data
+            # Return the chunks as a JSON response
+        return jsonify({'chunks': chunks}), 200
 
     except Exception as e:
             print(f"An error occurred: {e}")  # Log the exception
