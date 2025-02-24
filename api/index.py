@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify 
-from langchain.text_splitter import SemanticChunker
+from langchain_experimental.text_splitter import SemanticChunker
 
 app = Flask(__name__)
 
