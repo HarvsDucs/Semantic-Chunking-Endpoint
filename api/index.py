@@ -1,6 +1,4 @@
-from flask import Flask, request, jsonify
-from langchain.text_splitter import SemanticChunker
-from langchain.embeddings import OpenAIEmbeddings  
+from flask import Flask, request, jsonify 
 
 app = Flask(__name__)
 
