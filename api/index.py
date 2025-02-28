@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify 
 from langchain_experimental.text_splitter import SemanticChunker
 from langchain_openai import OpenAIEmbeddings
+import os 
+from supabase import create_client, Client
 
 app = Flask(__name__)
 
