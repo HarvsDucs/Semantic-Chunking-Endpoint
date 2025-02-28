@@ -4,6 +4,10 @@ from langchain_openai import OpenAIEmbeddings
 
 app = Flask(__name__)
 
+# Supabase configuration -  IMPORTANT: Use environment variables for security in production
+SUPABASE_URL = os.environ.get("SUPABASE_URL")
+SUPABASE_KEY = os.environ.get("SUPABASE_ANON_KEY")
+
 @app.route('/')
 def home():
     return 'Hello, World!'
